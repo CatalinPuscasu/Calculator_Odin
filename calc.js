@@ -23,3 +23,9 @@ function divide(a, b) {
 }
 
 console.log(divide(48, 2));
+
+function operate(a, b) {
+  return add(a, b);
+}
+
+console.log(operate(14, 89));
