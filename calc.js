@@ -29,3 +29,11 @@ function operate(a, b) {
 }
 
 console.log(operate(14, 89));
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+         document.querySelector('.result').textContent = button.textContent;
+    })
+});
