@@ -1,39 +1,51 @@
 //math operations
 
-function add(a, b) {
-    return a + b;
-}
+// function add(a, b) {
+//     return a + b;
+// }
 
-console.log(add(10, 45));
+// console.log(add(10, 45));
 
-function subtract(a, b) {
-    return a - b;
-}
+// function subtract(a, b) {
+//     return a - b;
+// }
 
-console.log(subtract(43, 8));
+// console.log(subtract(43, 8));
 
-function multiply(a, b) {
-    return a * b;
-}
+// function multiply(a, b) {
+//     return a * b;
+// }
 
-console.log(multiply(2, 9));
+// console.log(multiply(2, 9));
 
-function divide(a, b) {
-    return a / b;
-}
+// function divide(a, b) {
+//     return a / b;
+// }
 
-console.log(divide(48, 2));
+// console.log(divide(48, 2));
 
-function operate(a, b) {
-  return add(a, b);
-}
+// function operate(a, b) {
+//   return add(a, b);
+// }
 
-console.log(operate(14, 89));
+// console.log(operate(14, 89));
 
-const buttons = document.querySelectorAll('button');
+const Numbuttons = document.querySelectorAll('.btn');
+const equalBtn = document.querySelector('.equalBtn');
+const plusBtn = document.querySelector('.plusBtn');
 
-buttons.forEach(button => {
+
+Numbuttons.forEach(button => {
     button.addEventListener('click', () => {
-         document.querySelector('.result').textContent = button.textContent;
+         document.querySelector('.result').textContent = `${button.textContent}`;
+         if(Numbuttons.textContent !== null) {
+            button.addEventListener('click', () => {
+                 document.querySelector('.result').textContent = `${button.textContent}${button.textContent}`;
+            })
+         }
     })
+});
+
+plusBtn.addEventListener('click', () => {
+    return (Numbuttons + Numbuttons);
 });
