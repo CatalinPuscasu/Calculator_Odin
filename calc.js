@@ -41,6 +41,21 @@ const calculator = {
      operator : null,
 };
 
+function userInput(digit) {
+     const {displayedValue} = calculator;
+
+     calculator.displayedValue = displayedValue === '0' ? digit : displayedValue + digit;
+}
+userInput();
+
+function resultDisplay() {
+    const result = document.querySelector('.result');
+    result.value = calculator.displayedValue;
+}
+
+resultDisplay();
+
+
 
 
     Numbuttons.addEventListener('click', (event) => {
@@ -55,6 +70,14 @@ const calculator = {
                console.log('operator', target.value);
                return;
           }
+
+           if (target.classList.contains('clearBtn'))  {
+               console.log('clear', target.value);
+               return;
+          }
+
+          userInput(target.value);
+          resultDisplay();
     });
 
 // Numbuttons.forEach(button => {
