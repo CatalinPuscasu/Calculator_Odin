@@ -30,7 +30,7 @@
 
 // console.log(operate(14, 89));
 
-let Numbuttons = document.querySelectorAll('.btn');
+let Numbuttons = document.querySelector('.buttons-container');
 const equalBtn = document.querySelector('.equalBtn');
 const plusBtn = document.querySelector('.plusBtn');
 
@@ -42,16 +42,31 @@ const calculator = {
 };
 
 
-Numbuttons.forEach(button => {
-    button.addEventListener('click', () => {
-         document.querySelector('.result').textContent = `${button.textContent}`;
-         if(Numbuttons.textContent !== null) {
-            button.addEventListener('click', () => {
-                 document.querySelector('.result').textContent = `${button.textContent}${button.textContent}`;
-            })
-         }
-    })
-});
+
+    Numbuttons.addEventListener('click', (event) => {
+          let {target} = event;
+
+          if(!target.matches('button')) {
+
+                return;
+          }
+
+          if (target.classList.contains('operator'))  {
+               console.log('operator', target.value);
+               return;
+          }
+    });
+
+// Numbuttons.forEach(button => {
+//     button.addEventListener('click', () => {
+//          document.querySelector('.result').textContent = `${button.textContent}`;
+//          if(Numbuttons.textContent !== null) {
+//             button.addEventListener('click', () => {
+//                  document.querySelector('.result').textContent = `${button.textContent}${button.textContent}`;
+//             })
+//          }
+//     })
+// });
 
 
 
