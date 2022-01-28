@@ -30,9 +30,16 @@
 
 // console.log(operate(14, 89));
 
-const Numbuttons = document.querySelectorAll('.btn');
+let Numbuttons = document.querySelectorAll('.btn');
 const equalBtn = document.querySelector('.equalBtn');
 const plusBtn = document.querySelector('.plusBtn');
+
+const calculator = {
+     displayedValue : '0',
+     Operand1 : null,
+     awaitingSecondOperand : false,
+     operator : null,
+};
 
 
 Numbuttons.forEach(button => {
@@ -46,6 +53,31 @@ Numbuttons.forEach(button => {
     })
 });
 
-plusBtn.addEventListener('click', () => {
-    return (Numbuttons + Numbuttons);
-});
+
+
+// Numbuttons.forEach(button => {
+
+//     if (firstInput !== null) {
+//            button.addEventListener('click', () => {
+//          document.querySelector('.result').textContent = `${button.value}`;
+//          console.log(button.value);
+//          return button.value;
+//     })
+//     }
+   
+// });
+
+// console.log(secondInput);
+
+
+// let secondInput = Numbuttons.forEach(button => {
+//     button.addEventListener('click', () => {
+//          if (firstInput !== null) {
+//                  console.log("1 input is already put");
+//                  document.querySelector('.result').textContent = `${button.textContent}`;
+//          }
+         
+//     })
+// });
+
+
