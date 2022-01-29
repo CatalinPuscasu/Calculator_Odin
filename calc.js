@@ -66,7 +66,8 @@ function operate(nextOperator) {
      calculator.awaitingSecondOperand = true;
      calculator.operator = nextOperator;
 
-}
+};
+
 
 function resultDisplay() {
     const result = document.querySelector('.result');
