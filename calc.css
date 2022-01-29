@@ -23,6 +23,12 @@ body {
   border: red solid 3px;
 }
 
+.result {
+  text-align: right;
+  font-size: 2rem;
+  transform: translate(-60px);
+}
+
 .buttons-container {
   display: grid;
   grid-template-columns: 100px 100px 100px 100px;
