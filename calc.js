@@ -45,8 +45,7 @@ function userInput(digit) {
      const {displayedValue} = calculator;
 
      calculator.displayedValue = displayedValue === '0' ? digit : displayedValue + digit;
-}
-userInput();
+};
 
 function resultDisplay() {
     const result = document.querySelector('.result');
@@ -78,6 +77,8 @@ resultDisplay();
 
           userInput(target.value);
           resultDisplay();
+
+          // console.log('digit', target.value);
     });
 
 // Numbuttons.forEach(button => {
