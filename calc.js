@@ -129,27 +129,33 @@ Numbuttons.addEventListener('click', (event) => {
           
      let {target} = event;
 
+     const {value} = target;
+
           if(!target.matches('button')) {
 
                 return;
           }
 
-          if (target.classList.contains('operator'))  {
-               operate(target.value);
-               resultDisplay();
-               return;
+          switch (value) {
+
+               case '+':
+               case '-':
+               case '*':
+               case '/':
+               case '=':
+                    operate(value);
+                    break;
+               case 'Clear':
+                    reset();
+                    break;
+
+               default:
+                    if(Number.isInteger(parseFloat(value))) {
+                         userInput(value);
+                    }
           }
 
-           if (target.classList.contains('clearBtn'))  {
-               reset();
-               resultDisplay();
-               return;
-          }
-
-          userInput(target.value);
           resultDisplay();
-
-          // console.log('digit', target.value);
     });
 
 
