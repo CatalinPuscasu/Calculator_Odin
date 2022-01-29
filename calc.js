@@ -44,8 +44,10 @@ function userInput(digit) {
      const {displayedValue, awaitingSecondOperand} = calculator;
 
      if(awaitingSecondOperand === true) {
+
           calculator.displayedValue = digit;
           calculator.awaitingSecondOperand = false;
+
      } else {
             calculator.displayedValue = displayedValue === '0' ? digit : displayedValue + digit;
      }
@@ -63,10 +65,38 @@ function operate(nextOperator) {
           calculator.Operand1 = inputValue;
      }
 
+     else if (operator) {
+          const result = calculate(Operand1, inputValue, operator);
+
+          calculator.displayedValue = String(result);
+          calculator.Operand1 = result;
+     }
+
      calculator.awaitingSecondOperand = true;
      calculator.operator = nextOperator;
 
+   console.log(calculator);
+
+
 };
+
+function calculate(Operand1, Operand2, operator) {
+      
+     if(operator === "+") {
+         return Operand1 + Operand2;
+     }
+     else if (operator === '-') {
+         return Operand1 - Operand2;
+     }
+     else if (operator === '*') {
+         return Operand1 * Operand2;
+     }
+     else if (operator === '/') {
+         return Operand1 / Operand2;
+     }
+
+    return Operand2;
+}
 
 
 function resultDisplay() {
@@ -105,42 +135,6 @@ Numbuttons.addEventListener('click', (event) => {
           // console.log('digit', target.value);
     });
 
-// Numbuttons.forEach(button => {
-//     button.addEventListener('click', () => {
-//          document.querySelector('.result').textContent = `${button.textContent}`;
-//          if(Numbuttons.textContent !== null) {
-//             button.addEventListener('click', () => {
-//                  document.querySelector('.result').textContent = `${button.textContent}${button.textContent}`;
-//             })
-//          }
-//     })
-// });
 
-
-
-// Numbuttons.forEach(button => {
-
-//     if (firstInput !== null) {
-//            button.addEventListener('click', () => {
-//          document.querySelector('.result').textContent = `${button.value}`;
-//          console.log(button.value);
-//          return button.value;
-//     })
-//     }
-   
-// });
-
-// console.log(secondInput);
-
-
-// let secondInput = Numbuttons.forEach(button => {
-//     button.addEventListener('click', () => {
-//          if (firstInput !== null) {
-//                  console.log("1 input is already put");
-//                  document.querySelector('.result').textContent = `${button.textContent}`;
-//          }
-         
-//     })
-// });
 
 
