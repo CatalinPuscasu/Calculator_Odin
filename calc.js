@@ -31,8 +31,7 @@
 // console.log(operate(14, 89));
 
 let Numbuttons = document.querySelector('.buttons-container');
-const equalBtn = document.querySelector('.equalBtn');
-const plusBtn = document.querySelector('.plusBtn');
+
 
 const calculator = {
      displayedValue : '0',
@@ -42,23 +41,46 @@ const calculator = {
 };
 
 function userInput(digit) {
-     const {displayedValue} = calculator;
+     const {displayedValue, awaitingSecondOperand} = calculator;
 
-     calculator.displayedValue = displayedValue === '0' ? digit : displayedValue + digit;
+     if(awaitingSecondOperand === true) {
+          calculator.displayedValue = digit;
+          calculator.awaitingSecondOperand = false;
+     } else {
+            calculator.displayedValue = displayedValue === '0' ? digit : displayedValue + digit;
+     }
+   console.log(calculator);
+     
 };
+
+function operate(nextOperator) {
+      
+     const {Operand1, displayedValue, operator} = calculator;
+     
+     const inputValue = parseFloat(displayedValue);
+
+     if (Operand1 === null && !isNaN(inputValue)) {
+          calculator.Operand1 = inputValue;
+     }
+
+     calculator.awaitingSecondOperand = true;
+     calculator.operator = nextOperator;
+
+}
 
 function resultDisplay() {
     const result = document.querySelector('.result');
     result.value = calculator.displayedValue;
 }
 
-resultDisplay();
+// resultDisplay();
 
 
 
 
-    Numbuttons.addEventListener('click', (event) => {
-          let {target} = event;
+Numbuttons.addEventListener('click', (event) => {
+          
+     let {target} = event;
 
           if(!target.matches('button')) {
 
@@ -66,7 +88,8 @@ resultDisplay();
           }
 
           if (target.classList.contains('operator'))  {
-               console.log('operator', target.value);
+               operate(target.value);
+               resultDisplay();
                return;
           }
 
