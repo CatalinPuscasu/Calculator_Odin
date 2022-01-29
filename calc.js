@@ -61,6 +61,12 @@ function operate(nextOperator) {
      
      const inputValue = parseFloat(displayedValue);
 
+     if(operator && calculator.awaitingSecondOperand)  {
+               calculator.operator = nextOperator;
+               console.log(calculator);
+               return;
+     }
+
      if (Operand1 === null && !isNaN(inputValue)) {
           calculator.Operand1 = inputValue;
      }
@@ -98,6 +104,16 @@ function calculate(Operand1, Operand2, operator) {
     return Operand2;
 }
 
+function reset() {
+
+    calculator.displayedValue = '0';
+    calculator.Operand1 = null;
+    calculator.awaitingSecondOperand = false;
+    calculator.operator = null;
+    console.log(calculator);
+
+}
+
 
 function resultDisplay() {
     const result = document.querySelector('.result');
@@ -125,7 +141,8 @@ Numbuttons.addEventListener('click', (event) => {
           }
 
            if (target.classList.contains('clearBtn'))  {
-               console.log('clear', target.value);
+               reset();
+               resultDisplay();
                return;
           }
 
